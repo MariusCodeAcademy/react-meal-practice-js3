@@ -1,3 +1,4 @@
+import mealsImage from "../../assets/meals.jpg";
 const Header = (props) => {
   return (
     <div>
@@ -6,7 +7,7 @@ const Header = (props) => {
         <button>Cart</button>
       </header>
       <div>
-        <img src="" alt="" />
+        <img src={mealsImage} alt="table full of food" />
       </div>
     </div>
   );
