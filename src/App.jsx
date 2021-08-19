@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./compontents/Layout/Header";
 import Meals from "./compontents/Meals/Meals";
+import Cart from "./compontents/Cart/Cart";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <main>
         <Meals />
       </main>
+      <Cart />
     </div>
   );
 }
