@@ -6,11 +6,11 @@ import Cart from "./compontents/Cart/Cart";
 function App() {
   return (
     <div className="App">
+      <Cart />
       <Header />
       <main>
         <Meals />
       </main>
-      <Cart />
     </div>
   );
 }
