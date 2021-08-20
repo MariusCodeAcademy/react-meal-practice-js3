@@ -8,6 +8,7 @@ const MealItemForm = (props) => {
   const cartCtx = useContext(CartContext);
   // iskviesti addtocart funkcija is cart context
   const [formQty, setFormQty] = useState("1");
+  const [amountIsValid, setAmountIsValid] = useState(true);
 
   const inputValueHandler = (e) => {
     setFormQty(e.target.value);
@@ -15,9 +16,11 @@ const MealItemForm = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
+    setAmountIsValid(true);
 
     // isitikinti kad ivesta reiksme yra tarp 1 ir 5 ir ne tuscia ir siusti tik tada kai reiksme tinkama
-    if (formQty.trim().length === 0 || +formQty < 1 || +formQty > 5) return;
+    if (formQty.trim().length === 0 || +formQty < 1 || +formQty > 5)
+      return setAmountIsValid(false);
     // informuoti vartotoja jei jis bande ivesti netinkama reiksme
 
     console.log("ivesta: ", formQty);
@@ -39,6 +42,7 @@ const MealItemForm = (props) => {
         }}
       />
       <button>+ Add</button>
+      {!amountIsValid && <p>Please enter valid amount (1-5)</p>}
     </form>
   );
 };
