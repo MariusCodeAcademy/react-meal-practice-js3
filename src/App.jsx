@@ -3,6 +3,7 @@ import Header from "./compontents/Layout/Header";
 import Meals from "./compontents/Meals/Meals";
 import Cart from "./compontents/Cart/Cart";
 import { useState } from "react";
+import CartProvider from "./store/CartProvider";
 
 // uzduotis panaudoti state kintamaji ir valdyti modalo isjungima ir ijungima su
 // atitinkamais mygtukais ir paspaudimais
@@ -20,13 +21,13 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <CartProvider className="App">
       {cartIsShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
       <main>
         <Meals />
       </main>
-    </div>
+    </CartProvider>
   );
 }
 
