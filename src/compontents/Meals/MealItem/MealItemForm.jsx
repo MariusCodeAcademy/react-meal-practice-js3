@@ -1,11 +1,10 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import classes from "./MealItemForm.module.css";
 import Input from "../../UI/Input";
 import CartContext from "../../../store/cart-context";
 
 const MealItemForm = (props) => {
-  const cartCtx = useContext(CartContext);
   // iskviesti addtocart funkcija is cart context
   const [formQty, setFormQty] = useState("1");
   const [amountIsValid, setAmountIsValid] = useState(true);
@@ -24,7 +23,7 @@ const MealItemForm = (props) => {
     // informuoti vartotoja jei jis bande ivesti netinkama reiksme
 
     console.log("ivesta: ", formQty);
-    cartCtx.addItem({ id: "c1", name: "Sushi", amount: 2, price: 12.99 });
+    props.onAddItem(formQty);
   };
 
   return (
