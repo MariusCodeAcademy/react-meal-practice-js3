@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import classes from "./MealItemForm.module.css";
 import Input from "../../UI/Input";
-import CartContext from "../../../store/cart-context";
 
 const MealItemForm = (props) => {
   // iskviesti addtocart funkcija is cart context
@@ -35,8 +34,8 @@ const MealItemForm = (props) => {
         input={{
           id: "amount_" + props.id,
           type: "number",
-          // min: 1,
-          // max: 5,
+          min: 1,
+          max: 5,
           step: 1,
         }}
       />
