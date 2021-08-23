@@ -15,9 +15,11 @@ const Cart = (props) => {
 
   const cartItemAddHandler = (item) => {
     console.log("cartItemAddHandler ran", item);
+    cartCtx.addItem(item);
   };
   const cartItemRemoveHandler = (id) => {
     console.log("cartItemRemoveHandler ran", id);
+    cartCtx.removeItem(id);
   };
 
   const cartItems = (
