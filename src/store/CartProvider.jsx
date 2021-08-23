@@ -43,15 +43,17 @@ const cartReducer = (state, action) => {
       // surasti item krepselyje ir
       // masyvas yra state.items
       // itemID yra
+      console.log({ items: state.items, id: action.id });
       const id = action.id;
       // 1a jei item yra tik vienas krepselyje - pasalinam visa item
       // 2a jei daugiau tai pamazinam kieki
       // totalAmmount
-      throw new Error("remove item not completed yet");
-      return {
-        items: updatedItems,
-        totalAmount: updatedTotalAmount,
-      };
+      // throw new Error("remove item not completed yet");
+      return state;
+    // {
+    //   items: updatedItems,
+    //   totalAmount: updatedTotalAmount,
+    // };
     default:
       return state;
   }
