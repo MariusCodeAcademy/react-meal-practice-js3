@@ -10,8 +10,12 @@ const HeaderCartButton = (props) => {
   // TODO: count all items quantities
   const numberOfCartItems = cartCtx.items.length;
 
+  // uzdeti clase bump kaskarta kai yra idedamas ar isimamas item is krepselio
+  // ar keiciasi keikis
+  const btnClasses = `${classes.button} ${classes.bump}`;
+
   return (
-    <button onClick={props.onClick} className={classes.button}>
+    <button onClick={props.onClick} className={btnClasses}>
       <span className={classes.icon}>
         <CartIcon />
       </span>

@@ -16,6 +16,7 @@ const cartReducer = (state, action) => {
       const { item } = action;
       const updatedTotalAmount = state.totalAmount + item.price * item.amount;
       //// 1a itemas jau yra krepselyje mes norim padinti jo kiieki ir totalAmount
+      // galima perdaryti i modernesni varianta.
       const existingCartItemIndex = state.items.findIndex(
         (cartItem) => cartItem.id === item.id
       );
@@ -40,10 +41,17 @@ const cartReducer = (state, action) => {
       };
     case "REMOVE":
       // surasti item krepselyje ir
+      // masyvas yra state.items
+      // itemID yra
+      const id = action.id;
       // 1a jei item yra tik vienas krepselyje - pasalinam visa item
       // 2a jei daugiau tai pamazinam kieki
       // totalAmmount
       throw new Error("remove item not completed yet");
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
+      };
     default:
       return state;
   }
