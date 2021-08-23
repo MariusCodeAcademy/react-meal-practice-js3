@@ -12,11 +12,25 @@ import CartItem from "./CartItem";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
+
+  const cartItemAddHandler = (item) => {
+    console.log("cartItemAddHandler ran", item);
+  };
+  const cartItemRemoveHandler = (id) => {
+    console.log("cartItemRemoveHandler ran", id);
+  };
+
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((item) => (
         // Create CartItem component
-        <CartItem key={item.id} {...item} />
+        <CartItem
+          key={item.id}
+          // budas prideti funkcijai argumenta kai jo paprastai negalim prideti
+          onAddItem={cartItemAddHandler.bind(null, item)}
+          onRemoveItem={cartItemRemoveHandler.bind(null, item.id)}
+          {...item}
+        />
       ))}
     </ul>
   );
