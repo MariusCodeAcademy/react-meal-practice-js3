@@ -22,7 +22,7 @@ const MealItemForm = (props) => {
     // informuoti vartotoja jei jis bande ivesti netinkama reiksme
 
     console.log("ivesta: ", formQty);
-    props.onAddItem(formQty);
+    props.onAddItem(+formQty);
   };
 
   return (
