@@ -3,12 +3,12 @@ import { useContext } from "react";
 import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
 import CartContext from "../../store/cart-context";
+import CartItem from "./CartItem";
 
 // rodyti order mygtuka tik tai turim itemu krepselyje
 
 // diagrams.net ar panasiu irankiu nubraizyti musu padarytos programos struktura
-// atvaizduoti kur kokie duomenys, kur kokie props ar perduodamos funkcijos 
-
+// atvaizduoti kur kokie duomenys, kur kokie props ar perduodamos funkcijos
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
@@ -16,7 +16,7 @@ const Cart = (props) => {
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((item) => (
         // Create CartItem component
-        <li key={item.id}>{item.name}</li>
+        <CartItem key={item.id} {...item} />
       ))}
     </ul>
   );
