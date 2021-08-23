@@ -6,11 +6,16 @@ import CartContext from "../../store/cart-context";
 
 // rodyti order mygtuka tik tai turim itemu krepselyje
 
+// diagrams.net ar panasiu irankiu nubraizyti musu padarytos programos struktura
+// atvaizduoti kur kokie duomenys, kur kokie props ar perduodamos funkcijos 
+
+
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((item) => (
+        // Create CartItem component
         <li key={item.id}>{item.name}</li>
       ))}
     </ul>

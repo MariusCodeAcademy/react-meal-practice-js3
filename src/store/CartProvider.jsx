@@ -12,6 +12,10 @@ const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
       // visa pridejimo i krepseli logika ir grazinti nauja sate versija
+      // 2 keliai
+      //// 1a itemas jau yra krepselyje mes norim padinti jo kiieki ir totalAmount
+
+      //// 2a itemo nera krepsely mes ji idedam
       const { item } = action;
       const updatedItems = [...state.items, item];
       const updatedTotalAmount = state.totalAmount + item.price * item.amount;
@@ -20,6 +24,10 @@ const cartReducer = (state, action) => {
         totalAmount: updatedTotalAmount,
       };
     case "REMOVE":
+      // surasti item krepselyje ir
+      // 1a jei item yra tik vienas krepselyje - pasalinam visa item
+      // 2a jei daugiau tai pamazinam kieki
+      // totalAmmount
       throw new Error("remove item not completed yet");
     default:
       return state;
