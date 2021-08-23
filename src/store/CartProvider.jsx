@@ -10,7 +10,7 @@ const defaultCartState = {
 // action.item === { id: "c1", name: "Sushi", amount: 2, price: 12.99 }
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case "ADD":
+    case "ADD": {
       // visa pridejimo i krepseli logika ir grazinti nauja sate versija
       // 2 keliai
       const { item } = action;
@@ -39,21 +39,32 @@ const cartReducer = (state, action) => {
         items: updatedItems,
         totalAmount: updatedTotalAmount,
       };
+    }
     case "REMOVE":
       // surasti item krepselyje ir
-      // masyvas yra state.items
-      // itemID yra
-      console.log({ items: state.items, id: action.id });
-      const id = action.id;
-      // 1a jei item yra tik vienas krepselyje - pasalinam visa item
+      const existingCartItem = state.items.find(
+        (cartItem) => cartItem.id === action.id
+      );
+      let updatedItems;
+      // total amount
+      const updatedTotalAmount = state.totalAmount - existingCartItem.price;
       // 2a jei daugiau tai pamazinam kieki
-      // totalAmmount
-      // throw new Error("remove item not completed yet");
-      return state;
-    // {
-    //   items: updatedItems,
-    //   totalAmount: updatedTotalAmount,
-    // };
+      if (existingCartItem.amount > 1) {
+        updatedItems = state.items.map((cartItem) => {
+          if (cartItem.id === action.id)
+            return { ...cartItem, amount: cartItem.amount - 1 };
+          return cartItem;
+        });
+      } else if (existingCartItem.amount === 1) {
+        updatedItems = state.items.filter(
+          (cartItem) => cartItem.id !== action.id
+        );
+      }
+
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
+      };
     default:
       return state;
   }
