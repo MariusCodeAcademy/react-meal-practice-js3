@@ -8,8 +8,12 @@ const HeaderCartButton = (props) => {
   const cartCtx = useContext(CartContext);
 
   // TODO: count all items quantities
-  const numberOfCartItems = cartCtx.items.length;
+  const numberOfCartItems = cartCtx.items.reduce(
+    (total, curObj) => total + curObj.amount,
+    0
+  );
 
+  console.log("cart items", cartCtx.items);
   // uzdeti clase bump kaskarta kai yra idedamas ar isimamas item is krepselio
   // ar keiciasi keikis
   const btnClasses = `${classes.button} ${classes.bump}`;
